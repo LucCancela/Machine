@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/Marise%20Miranda/Downloads/Marises%20Machine.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+                margin: 0;
+                
+        }
+        .div_menu{
+                background-color: rgb(0, 81, 255);
+                margin: 0%;
+        }
+
+        span{
+           margin: 0;     
+           padding: 1px;
+           display: flex;
+           justify-content: center;
+           color: azure;
+           font-size: 35px;
+
+        }
+
+        .button_converter{
+                width: 125px; 
+                height: 40px; 
+                border-radius: 5px;
+                border-color: rgb(0, 81, 255);
+
+        }
+
+
+    </style>
+
+
+</head>
+
+<body bgcolor="#ADD8E6">
+    
+        <div class="div_menu">
+                <span>Marise's Machine</span>
+
+        </div>
+    <center>
+        
+
+<br>
+        <h3>Escolha a Base</h3>
+        <select id="select_base">
+                <option value="vazio">---</option>
+                <option value="Decimal">Decimal</option>
+                <option value="Octal">Octal</option>
+                <option value="Hexa">Hexadecimal</option>
+                <option value="Binario">Binario</option> 
+        </select>
+        <br><br>
+        <b>Valor: </b><br>
+        <input type="text" id="input_valorEscolhido">
+
+<br><br>
+
+        <h3>converter para:</h3>
+
+        <b>Decimal</b><br>
+        <input id="input_decimal" type="text">
+
+<br><br>
+
+        <b>Octal</b> <br>
+        <input id="input_octal" type="text">
+<br>
+
+        <!-- <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 15%; height: 40px; font-weight: 500;" id="demo2"></div> -->
+
+<br><br>
+        <b>Hexadecimal</b> <br>
+        <input id="input_hexa" type="text">
+
+        <!-- <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(7, 7, 7); width: 15%; height: 40px; font-weight: 500;" id="demo3"></div>
+         -->
+<br><br>
+        <b>Binário</b><br>
+        <input id="input_binario" type="text">
+<br>
+        <!-- <div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(5, 5, 5); width: 60%; height: 50px; font-weight: 500;" id="demo4"></div> -->
+
+<br><br>
+
+        <button class="button_converter"onclick="converter()">Converter</button>
+    </center>
+
+
+</body>
+</html>
+
+
+<script>
+
+        function converter() {
+                
+                let baseEscolhida = select_base.value
+                let valorEscolhido = Number(input_valorEscolhido.value)
+
+                if(baseEscolhida == 'Decimal'){
+                        // decimal para todos
+                        
+                        valorEscolhido 
+
+                        let decimal = valorEscolhido
+
+                        let octal = valorEscolhido.toString(8);
+
+                        let hexadecimal = valorEscolhido.toString(16);
+
+                        let binaria = valorEscolhido.toString(2);
+
+
+                        document.getElementById("input_decimal").value = decimal;
+                        document.getElementById("input_octal").value = octal;
+                        document.getElementById("input_hexa").value = hexadecimal;
+                        document.getElementById("input_binario").value = binaria;
+
+
+                        // demo4.style.display = 'block'
+
+                        // demo3.style.display = 'block'
+
+                        // demo2.style.display = 'block'   
+
+                }
+                else if(baseEscolhida == 'Octal'){
+
+                         baseEscolhida = 8
+                         valorEscolhido
+
+                         let octal = valorEscolhido
+
+                         let decimal = parseInt(valorEscolhido, baseEscolhida)
+
+                         let hexadecimal = decimal.toString(16)
+
+                         let binaria = decimal.toString(2)
+
+                         
+
+                        
+                         document.getElementById("input_decimal").value = decimal;
+                         document.getElementById("input_octal").value = octal;
+                         document.getElementById("input_hexa").value = hexadecimal;
+                         document.getElementById("input_binario").value = binaria;
+
+
+                }
+                
+                
+        }
+
+
+</script>
