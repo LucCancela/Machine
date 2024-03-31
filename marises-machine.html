@@ -84,6 +84,23 @@
 
                         let binaria = valorConverter.toString(2);
 
+                        if(base == 10){
+                                if(isNaN(valorConverter)){
+                                        alert("Valor inválido!")
+                                }
+                        }else if(base == 2){
+                                if(isNaN(valorConverter)){
+                                        alert("Valor inválido!")
+                                }
+                        }else if(base == 8){
+                                if(isNaN(valorConverter)){
+                                        alert("Valor inválido!")
+                                }
+                        }else if(base == 16){
+                                if(isNaN(valorConverter)){
+                                        alert("Valor inválido!")
+                                }
+                        }
 
                         document.getElementById("div_decimal").innerHTML = ` ${decimal}`;
                         document.getElementById("div_octal").innerHTML = ` ${octal}`;
