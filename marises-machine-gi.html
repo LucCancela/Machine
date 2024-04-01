@@ -3,127 +3,114 @@
 
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style>
-                .resultado {
-                        display: none; 
-                        background-color: #dcdcdc; 
-                        border-radius: 5px; 
-                        padding: 5px; 
-                        color: rgb(7, 7, 7); 
-                        width: 15%; 
-                        height: 40px; 
-                        font-weight: 500;
-                }
-        </style>
+        <link rel="stylesheet" href="stylegi.css">
+        <title>Machine Customizada</title>
 </head>
 
-<body bgcolor="#00ffff">
+<body>
+        <div class="header">
+                <h1>Marise's Machine</h1>
+        </div>
+
+        <br><br>
 
         <center>
-                <h1>Marise's Machine</h1>
-
-                <br><br>
-
-                <h3>Insira valor e base</h3>
-                <input id="input_valorConverter" type="text" placeholder="Digite o valor">
-                <select id="select_base">
-                        <option value="10">Decimal</option>
-                        <option value="2">Binário</option>
-                        <option value="8">Octal</option>
-                        <option value="16">Hexadecimal</option>
-                </select>
-                <br><br>
-                <button onclick="converter()">Converter</button>
-                <h3>Converter para:</h3>
+                <div class="calculadora">
+                        <h3>Insira valor e base</h3>
+                        <input id="input_valorConverter" type="text" placeholder="Digite o valor">
+                        <select id="select_base">
+                                <option value="10">Decimal</option>
+                                <option value="2">Binário</option>
+                                <option value="8">Octal</option>
+                                <option value="16">Hexadecimal</option>
+                        </select>
+                        <br><br>
+                        <button onclick="converter()">Converter</button>
+                        <h3>Converter para:</h3>
 
 
-                <b>Decimal</b>
-                <input onclick="aparecer_decimal()" type="checkbox">
-                <br>
-                <div class ="resultado"id="div_decimal"></div>
-                <br><br>
+                        <b>Decimal</b>
+                        <input onclick="aparecer_decimal()" type="checkbox">
+                        <br>
+                        <div class="resultado" id="div_decimal"></div>
+                        <br><br>
 
-                <b>Octal</b>
-                <input onclick="aparecer_octal()" type="checkbox">
-                <br>
-                <div class ="resultado"id="div_octal"></div>
-                <br><br>
+                        <b>Octal</b>
+                        <input onclick="aparecer_octal()" type="checkbox">
+                        <br>
+                        <div class="resultado" id="div_octal"></div>
+                        <br><br>
 
-                <b>Hexadecimal</b>
-                <input onclick="aparecer_hexa()" type="checkbox">
-                <br>
-                <div class="resultado" id="div_hexa"></div>
-                <br><br>
+                        <b>Hexadecimal</b>
+                        <input onclick="aparecer_hexa()" type="checkbox">
+                        <br>
+                        <div class="resultado" id="div_hexa"></div>
+                        <br><br>
 
-                <b>Binário</b>
-                <input onclick="aparecer_bin()" type="checkbox">
-                <br>
-                <div class="resultado" id="div_binario"></div>
-                <br><br>
-                
+                        <b>Binário</b>
+                        <input onclick="aparecer_bin()" type="checkbox">
+                        <br>
+                        <div class="resultado" id="div_binario"></div>
+                        <br><br>
+                </div>
         </center>
+</body>
 
+</html>
 
+<script>
 
+        function converter() {
+                let base = Number(select_base.value)
+                let valor = input_valorConverter.value
+                let valorConverter = parseInt(valor, base)
 
-        <script>
+                let decimal = valorConverter.toString(10);
 
-                function converter() {
-                        let base = Number(select_base.value)
-                        let valor = input_valorConverter.value
-                        let valorConverter = parseInt(valor,base)
+                let octal = valorConverter.toString(8);
 
-                        let decimal = valorConverter.toString(10);
+                let hexadecimal = valorConverter.toString(16);
 
-                        let octal = valorConverter.toString(8);
+                let binaria = valorConverter.toString(2);
 
-                        let hexadecimal = valorConverter.toString(16);
+                let invalido = /ghijklmnopqrstuvwxyz/
 
-                        let binaria = valorConverter.toString(2);
-
-                        let invalido = /ghijklmnopqrstuvwxyz/
-
-                        if(base == 10 && valor.match( /[^0-9]/g)){
-                                alert("Valor inválido!")
-                        }
-                        else if(base == 2 && valor.match( /[^0-1]/g)){
-                                alert("Valor inválido!")
-                        }
-                        else if(base == 8 && valor.match( /[^0-7]/g)){
-                                alert("Valor inválido!")
-                        }
-                        else if(base == 16 && valor.match(/[^0-9]/g) && valor.match(/[g-z]/g)){
-                                alert("Valor inválido!")
-                        }
-                        else{
+                if (base == 10 && valor.match(/[^0-9]/g)) {
+                        alert("Valor inválido!")
+                }
+                else if (base == 2 && valor.match(/[^0-1]/g)) {
+                        alert("Valor inválido!")
+                }
+                else if (base == 8 && valor.match(/[^0-7]/g)) {
+                        alert("Valor inválido!")
+                }
+                else if (base == 16 && valor.match(/[^0-9]/g) && valor.match(/[g-z]/g)) {
+                        alert("Valor inválido!")
+                }
+                else {
                         document.getElementById("div_decimal").innerHTML = ` ${decimal}`;
                         document.getElementById("div_octal").innerHTML = ` ${octal}`;
                         document.getElementById("div_hexa").innerHTML = ` ${hexadecimal.toUpperCase()}`;
                         document.getElementById("div_binario").innerHTML = ` ${binaria}`;
-                        }
-
                 }
 
-                function aparecer_decimal() {
-                        div_decimal.style.display = 'block'
-                }
+        }
 
-                function aparecer_bin() {
-                        div_binario.style.display = 'block'
-                }
+        function aparecer_decimal() {
+                div_decimal.style.display = 'block'
+        }
 
-                function aparecer_hexa() {
-                        div_hexa.style.display = 'block'
-                }
+        function aparecer_bin() {
+                div_binario.style.display = 'block'
+        }
 
-                function aparecer_octal() {
-                        div_octal.style.display = 'block'
-                }
+        function aparecer_hexa() {
+                div_hexa.style.display = 'block'
+        }
 
-        </script>
-</body>
+        function aparecer_octal() {
+                div_octal.style.display = 'block'
+        }
 
-</html>
+</script>
