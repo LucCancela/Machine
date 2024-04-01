@@ -105,26 +105,34 @@
                 
                 let baseEscolhida = select_base.value
                 let valorEscolhido = Number(input_valorEscolhido.value)
+                let validarBase = parseInt(valorEscolhido, baseEscolhida)
 
                 if(baseEscolhida == 'Decimal'){
-                        // decimal para todos
+
+                        baseEscolhida = 10
+                                
+                        if(isNaN(validarBase)){
+                                alert("Valor Inválido")
+                                
+                        }else{
+                                // decimal para todos
+        
+                               let decimal = valorEscolhido
+        
+                               let octal = valorEscolhido.toString(8);
+        
+                               let hexadecimal = valorEscolhido.toString(16);
+        
+                               let binaria = valorEscolhido.toString(2);
+        
+        
+                               document.getElementById("input_decimal").value = decimal;
+                               document.getElementById("input_octal").value = octal;
+                               document.getElementById("input_hexa").value = hexadecimal;
+                               document.getElementById("input_binario").value = binaria;
+
+                        }
                         
-                        valorEscolhido 
-
-                        let decimal = valorEscolhido
-
-                        let octal = valorEscolhido.toString(8);
-
-                        let hexadecimal = valorEscolhido.toString(16);
-
-                        let binaria = valorEscolhido.toString(2);
-
-
-                        document.getElementById("input_decimal").value = decimal;
-                        document.getElementById("input_octal").value = octal;
-                        document.getElementById("input_hexa").value = hexadecimal;
-                        document.getElementById("input_binario").value = binaria;
-
 
                         // demo4.style.display = 'block'
 
@@ -136,24 +144,76 @@
                 else if(baseEscolhida == 'Octal'){
 
                          baseEscolhida = 8
-                         valorEscolhido
 
-                         let octal = valorEscolhido
+                         let checkNumber = str => /^(0o)?[0-7]+$/i.test(str)
 
-                         let decimal = parseInt(valorEscolhido, baseEscolhida)
+                         if(isNaN(validarBase)){
+                                alert("Valor Inválido")
+                                
+                        }else {
 
-                         let hexadecimal = decimal.toString(16)
+                                let octal = valorEscolhido
+        
+                                let decimal = parseInt(valorEscolhido, baseEscolhida)
+        
+                                let hexadecimal = decimal.toString(16)
+        
+                                let binaria = decimal.toString(2)
+        
+                                document.getElementById("input_decimal").value = decimal;
+                                document.getElementById("input_octal").value = octal;
+                                document.getElementById("input_hexa").value = hexadecimal;
+                                document.getElementById("input_binario").value = binaria;
+                        }
 
-                         let binaria = decimal.toString(2)
 
-                         
-
+                }else if(baseEscolhida == 'Hexa'){
+                        baseEscolhida = 16
                         
-                         document.getElementById("input_decimal").value = decimal;
-                         document.getElementById("input_octal").value = octal;
-                         document.getElementById("input_hexa").value = hexadecimal;
-                         document.getElementById("input_binario").value = binaria;
+                         if(isNaN(validarBase)){
+                                alert("Valor Inválido")
+                                
+                        }else {
 
+                                let hexadecimal = valorEscolhido
+        
+                                let decimal = parseInt(valorEscolhido, baseEscolhida)
+
+                                let octal = decimal.toString(8)
+        
+                                let binaria = decimal.toString(2)
+        
+                                document.getElementById("input_decimal").value = decimal;
+                                document.getElementById("input_octal").value = octal;
+                                document.getElementById("input_hexa").value = hexadecimal;
+                                document.getElementById("input_binario").value = binaria;
+
+                        }
+
+                }else if(baseEscolhida == 'Binario'){
+                        baseEscolhida = 2
+                        // let checkNumber = /^[0-1]+$/
+                        let checkNumber = /^[1-9]*[02-9]$|^[02-9]/.test(valorEscolhido)
+                        
+
+                         if(checkNumber){
+                                alert("Valor Inválido")
+                                
+                        }else {
+
+                                let binaria = valorEscolhido
+        
+                                let decimal = parseInt(valorEscolhido, baseEscolhida)
+
+                                let octal = decimal.toString(8)
+        
+                                let hexadecimal = decimal.toString(16)
+        
+                                document.getElementById("input_decimal").value = decimal;
+                                document.getElementById("input_octal").value = octal;
+                                document.getElementById("input_hexa").value = hexadecimal;
+                                document.getElementById("input_binario").value = binaria;
+                        }
 
                 }
                 
