@@ -84,29 +84,26 @@
 
                         let binaria = valorConverter.toString(2);
 
-                        if(base == 10){
-                                if(isNaN(valorConverter)){
-                                        alert("Valor inválido!")
-                                }
-                        }else if(base == 2){
-                                if(isNaN(valorConverter)){
-                                        alert("Valor inválido!")
-                                }
-                        }else if(base == 8){
-                                if(isNaN(valorConverter)){
-                                        alert("Valor inválido!")
-                                }
-                        }else if(base == 16){
-                                if(isNaN(valorConverter)){
-                                        alert("Valor inválido!")
-                                }
-                        }
+                        let invalido = /ghijklmnopqrstuvwxyz/
 
+                        if(base == 10 && valor.match( /[^0-9]/g)){
+                                alert("Valor inválido!")
+                        }
+                        else if(base == 2 && valor.match( /[^0-1]/g)){
+                                alert("Valor inválido!")
+                        }
+                        else if(base == 8 && valor.match( /[^0-7]/g)){
+                                alert("Valor inválido!")
+                        }
+                        else if(base == 16 && valor.match(/[^0-9]/g) && valor.match(/[g-z]/g)){
+                                alert("Valor inválido!")
+                        }
+                        else{
                         document.getElementById("div_decimal").innerHTML = ` ${decimal}`;
                         document.getElementById("div_octal").innerHTML = ` ${octal}`;
                         document.getElementById("div_hexa").innerHTML = ` ${hexadecimal.toUpperCase()}`;
                         document.getElementById("div_binario").innerHTML = ` ${binaria}`;
-
+                        }
 
                 }
 
